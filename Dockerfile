@@ -1,6 +1,4 @@
-# syntax=docker/dockerfile:1
-
-FROM python:3.11-slim-buster  # check the latest version
+FROM python:3.11-slim-buster  
 
 WORKDIR /app
 
