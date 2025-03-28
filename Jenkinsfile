@@ -18,13 +18,11 @@ node {
     }
 
      stage('Test image') {
-        // Solution 1 (recommended)
-        docker.image('akmabrdockerid/test').inside('--workdir /app') {
-            sh 'echo "Tests passed"'
-        }
+        // Solution 3: Completely avoid Jenkins' docker.inside() method
+        sh 'docker run --rm akmabrdockerid/test echo "Tests passed"'
         
-        // OR Solution 2 (simpler)
-        // sh 'docker run --rm akmabrdockerid/test echo "Tests passed"'
+        // For actual tests, you might use:
+        // sh 'docker run --rm akmabrdockerid/test python -m pytest'
     }
 
     stage('Push image') {
