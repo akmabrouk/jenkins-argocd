@@ -17,12 +17,14 @@ node {
         // app = docker.build("akmabrdockerid/test", "--add-host=pypi.org:8.8.8.8 .")
     }
 
-    stage('Test image') {
-  
-
-        app.inside {
+     stage('Test image') {
+        // Solution 1 (recommended)
+        docker.image('akmabrdockerid/test').inside('--workdir /app') {
             sh 'echo "Tests passed"'
         }
+        
+        // OR Solution 2 (simpler)
+        // sh 'docker run --rm akmabrdockerid/test echo "Tests passed"'
     }
 
     stage('Push image') {
