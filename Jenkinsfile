@@ -9,7 +9,12 @@ node {
 
     stage('Build image') {
   
-       app = docker.build("akmabrdockerid/test")
+       //app = docker.build("akmabrdockerid/test")
+       // Solution 2 (host networking)
+       app = docker.build("akmabrdockerid/test", "--network=host .")
+        
+        // OR Solution 3 (explicit DNS)
+        // app = docker.build("akmabrdockerid/test", "--add-host=pypi.org:8.8.8.8 .")
     }
 
     stage('Test image') {
