@@ -1,1 +1,1 @@
-Flask>=2.0.0,<3.0.0
+Flask>=2.3.0,<3.0.0  # Best choice for Python 3.11
